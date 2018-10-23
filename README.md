@@ -8,7 +8,7 @@ behavior dirven logic
   +If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.
   +first player to 100 wins
 +COMPUTER LOGIC
-+EASY MODE
-  +Easy: Computer always stops after second roll.
++PLAYER VERSUS PLAYER
+  +Two users input their names and play against each other.
 +HARD MODE
   +Hard: Computer uses strategy based on current total and rolled dice.

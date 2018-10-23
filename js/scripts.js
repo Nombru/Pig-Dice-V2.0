@@ -9,20 +9,25 @@ var dice = {
   }
 }
 
-// print element to page
-function printNumber(number) {
-  var dice1 =
-$(".dice-1").innerHTML;
-dice1 = number;
-  // dice1.innerHTML = number;
-}
+
 
 // User Logic
 
 $(document).ready(function(){
   $("#easy").click(function(event){
     event.preventDefault();
+    $("#easy").fadeOut("slow")
+    $("#hard").fadeOut("slow")
+    $(".game").fadeIn("slow")
+    $(".reset").fadeIn("slow")
+    var name1 = prompt("What is your name playa?");
+    $("#playerName1").text(name1);
+    var name2 = prompt("What is your name playa?");
+    $("#playerName2").text(name2);
+  });
+  $("#roll1").click(function(event){
+    event.preventDefault();
     var result = dice.roll();
-    $(".dice-1").text(result);
+    $("#dice-num").text(result);
   });
 });

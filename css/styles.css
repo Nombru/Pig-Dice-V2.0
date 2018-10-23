@@ -1,10 +1,21 @@
+.game {
+  display: none;
+}
+
+.reset {
+  display: none;
+}
+
 .dice-1 {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   padding: 50px;
   margin: 50px auto;
   border: 1px solid gray;
   border-radius: 10px;
   font-size:80px;
 }
+#dice-num {
+  text-align: center;
+  padding-bottom: 10px;
 }
