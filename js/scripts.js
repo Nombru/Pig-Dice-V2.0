@@ -1,15 +1,42 @@
 // Business Logic
+var player1="",
+var player2="",
 
 // Dice Function.
-var dice = {
-  sides: 6,
-  roll: function () {
-  var randomNumber = Math.floor(Math.random() * this.sides +1);
+var diceRoll = function () {
+  var randomNumber = Math.floor(Math.random() * 6 +1);
     return randomNumber
   }
+ //player object
+ function Player(){
+   this.roll = 0,
+   this.roundScore = 0,
+   this.totalScore = 0,
+   this.playerName = "",
+ }
+ //prototype to check for one
+ Player.prototype.rollOne =  function(){
+   if(this.roll === 1){
+     this.roundScore = 0;
+     alert("Aw dang, " + this.playerName + ", you rolled a 1, your turn is OVER. You get NOTHING.");
+   }else{
+     this.roundScore += this.roll;
+   }
+ }
+//prototype for hold
+Player.prototype.hold = function(){
+  this.totalScore += this.roundScore;
+  this.roundScore = 0;
+  alert(this.playName + " , your turn is over. Your current score is " + this.totalScore)
 }
-
-
+//check for win condition
+Player.prototype.checkWin = function(){
+  if(this.totalScore >= 100){
+    ///trophy screen
+    $(".winner").show();
+  }
+}
+//clear values for new game
 
 // User Logic
 
