@@ -41,12 +41,11 @@ Player.prototype.checkWin = function(){
 // User Logic
 
 $(document).ready(function(){
-  $("#easy").click(function(event){
+  $("#start").click(function(event){
     event.preventDefault();
     player1 = new Player;
     player2 = new Player;
-    $("#easy").fadeOut("slow")
-    $("#hard").fadeOut("slow")
+    $("#start").fadeOut("slow")
     $(".game").fadeIn("slow")
     $(".reset").fadeIn("slow")
     var playerName1 = prompt("What's your name playa?");
