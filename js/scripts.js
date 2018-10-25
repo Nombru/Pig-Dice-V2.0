@@ -1,6 +1,6 @@
 // Business Logic
-var player1="",
-var player2="",
+var player1="";
+var player2="";
 
 // Dice Function.
 var diceRoll = function () {
@@ -9,11 +9,11 @@ var diceRoll = function () {
   }
  //player object
  function Player(){
-   this.roll = 0,
-   this.roundScore = 0,
-   this.totalScore = 0,
-   this.playerName = "",
- }
+   this.roll = 0;
+   this.roundScore = 0;
+   this.totalScore = 0;
+   this.playerName = "";
+ };
  //prototype to check for one
  Player.prototype.rollOne =  function(){
    if(this.roll === 1){
@@ -27,7 +27,7 @@ var diceRoll = function () {
 Player.prototype.hold = function(){
   this.totalScore += this.roundScore;
   this.roundScore = 0;
-  alert(this.playName + " , your turn is over. Your current score is " + this.totalScore)
+  alert(this.playerName + ", your turn is over. Your current score is " + this.totalScore)
 }
 //check for win condition
 Player.prototype.checkWin = function(){
@@ -43,18 +43,54 @@ Player.prototype.checkWin = function(){
 $(document).ready(function(){
   $("#easy").click(function(event){
     event.preventDefault();
+    player1 = new Player;
+    player2 = new Player;
     $("#easy").fadeOut("slow")
     $("#hard").fadeOut("slow")
     $(".game").fadeIn("slow")
     $(".reset").fadeIn("slow")
-    var name1 = prompt("What is your name playa?");
-    $("#playerName1").text(name1);
-    var name2 = prompt("What is your name playa?");
-    $("#playerName2").text(name2);
+    var playerName1 = prompt("What's your name playa?");
+    var playerName2 = prompt("What's your name playa?");
+
+    player1.playerName=playerName1;
+    player2.playerName=playerName2;
+    $("#playerName1").text(playerName1 + ":");
+    $("#playerName2").text(playerName2 + ":");
+    console.log(player1, player2);
   });
-  $("#roll1").click(function(event){
-    event.preventDefault();
-    var result = dice.roll();
-    $("#dice-num").text(result);
+// Player One Roll
+  $("#roll1").click(function(){
+    player1.roll = diceRoll();
+    $("#dice-num").text(player1.roll);
+    player1.rollOne();
+    $(".tally").text(player1.roundScore)
+  });
+// Player Two Roll
+  $("#roll2").click(function(){
+    player2.roll = diceRoll();
+    $("#dice-num").text(player2.roll);
+    player2.rollOne();
+    $(".tally").text(player2.roundScore)
+  });
+
+// Player One Hold
+  $("#hold1").click(function(){
+    player1.hold();
+    $("#player-1-score").text(player1.totalScore);
+    $(".tally").empty();
+    $("#dice-num").empty();
+    player1.checkWin();
+  })
+// Player Two Hold
+    $("#hold2").click(function(){
+      player2.hold();
+      $("#player-2-score").text(player2.totalScore);
+      $(".tally").empty();
+      $("#dice-num").empty();
+      player2.checkWin();
+    })
+  //winner button to reveal prize
+  $("#win").click(function() {
+    $("#pig").fadeIn(fast);
   });
 });
